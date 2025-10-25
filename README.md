@@ -1,6 +1,8 @@
 # Gotta-Catch-Them-All
 Pokemon Cards Management
 
+This is the project for COMP SCI 2207, which is clone from our works of private Univeristy of Adelaide repo.
+
 Welcome to the Pokémon Management project! This is a fun and interactive web app where users can:
 
 * **Play games to earn points** 🕹️
@@ -19,7 +21,7 @@ Follow these steps to set up and run the project on your local machine.
 To get started, clone the repository using Git:
 
 ```bash
-git clone https://github.com/UAdelaide/25S1_WDC_UG_Groups_27.git
+git clone https://github.com/Ann-Phann/Gotta-Catch-Them-All.git
 ```
 After cloning, you can open the repository folder. Alternatively, you can download it as a ZIP file and extract it.
 
