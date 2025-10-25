@@ -107,21 +107,26 @@ npm run dev
 ```
 This will launch the backend using nodemon.
 
-### 5. Port Configuration
+### 5. Run the Frontend Server
+- You can access the frontend through the port `http://localhost:5500` or go to `index.html` in `frontend` folder.
+- Make sure that you have `live server` extension.
+- Find and click `Go Live` in the bottom right bar.
+
+### 6. Port Configuration
 Frontend: http://localhost:5500
 
 Backend (API): http://localhost:8080
 
 Ensure these ports are used so the frontend and backend can communicate correctly.
 
-### 6. Admin Account
+### 7. Admin Account
 To access admin features, use the following pre-configured account:
     Username: admin
     Password: adminaA!
 
 For development/testing purposes only. Please secure or update credentials in production.
 
-### 7.  Features
+### 8.  Features
 🎮 Game System: Earn points by playing
 
 🛒 Pokémon Shop: Purchase Pokémon with earned points
@@ -136,4 +141,3 @@ Ensure your MySQL credentials and database settings are correctly configured in 
 If CORS issues occur, verify that requests from localhost:5500 are allowed in the backend configuration.
 
 Enjoy collecting and managing your Pokémon!
-Feel free to contribute or report issues! 😄
