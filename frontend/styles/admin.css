@@ -1,0 +1,256 @@
+.userbase-container {
+  display: flex;
+  height: 100vh;
+  font-family: "Rubik", sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.sidebar {
+  width: 20vw;
+  background-color: var(--main-yellow);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu:hover {
+  font-size: 1.9vw;
+  color: white;
+}
+
+.menu.active {
+  background-color: white;
+  color: var(--main-yellow);
+  font-weight: bold;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: white;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+  max-height: 800px;
+  position: relative;
+  /* border: 2px solid red; */
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-table th {
+  font-size: 1.5rem;
+}
+
+.user-table td {
+  font-size: 0.95rem;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.actions {
+  /* border: 2px solid red; */
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.editing {
+  display: flex;
+  flex-direction: row;
+}
+
+.addUsers,
+.editUsers,
+.delete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* border: 2px solid red; */
+  padding: 1rem;
+  gap: 0.5rem;
+  max-width: 500px;
+}
+
+.bottom-actions {
+  margin-top: auto;
+  align-self: flex-end;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  /* border: 2px solid red; */
+  background: white;
+}
+
+.search-filter {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  top: 0;
+  position: sticky;
+  background: white;
+  padding: 10px;
+  z-index: 10;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-filter input[type="text"],
+.search-filter input {
+  border: 3px solid var(--main-yellow);
+  padding: 10px 2.5rem 10px 10px;
+  outline: none;
+  font-size: 1rem;
+  background-image: url('search.png');
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: right 10px center;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+.search-filter input::placeholder {
+  color: black;
+}
+
+.add-user-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.add-user-form input {
+  padding: 5px;
+}
+
+.add-user-form button {
+  padding: 6px 12px;
+}
+
+.actions-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cancel-btn,
+.save-btn,
+.delete-btn,
+.edit-btn,
+.addUser-btn {
+  padding: 10px;
+  background-color: #eee;
+  color: black;
+  border-radius: 5px;
+}
+
+
+/* account section */
+
+.account-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+.account-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .account-info {
+    flex-direction: row;
+  }
+}
+
+.profile-img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.user-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  border: 1px solid black;
+  background-color: transparent;
+  color: inherit;
+}
+
+.password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.update-btn {
+  background-color: #ca8a04;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.2s ease;
+}
+
+.update-btn:hover {
+  background-color: #a16207;
+}

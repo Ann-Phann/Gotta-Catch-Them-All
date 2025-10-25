@@ -1,0 +1,8 @@
+// Middleware to check if user is logged in or not.
+
+const checkAuth = (req, res, next) => {
+    if (!req.session.user) {
+        return res.status(401).json({ error: "Unauthorized. Please log in" });
+    }
+    next();
+};

@@ -1,0 +1,124 @@
+
+  /* 📲 Tablet (769px–1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .dev-view {
+      padding: 2rem;
+    }
+
+    .dev-view h1 {
+      font-size: 2.25rem;
+    }
+  }
+
+  /* 🖥️ Desktop (1025px and above) */
+  @media (min-width: 1025px) {
+    .dev-view {
+      padding: 4rem;
+    }
+
+    .dev-view h1 {
+      font-size: 2.75rem;
+    }
+  }  */
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.slider-container {
+    position: relative;
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    /* overflow: hidden; Removed from here, moved to .slide-content */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.slide-content {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px;
+    /* --- CHANGES START HERE --- */
+    height: 300px; /* Fixed height for all images to ensure consistency */
+    overflow: hidden; /* Crucial: Hides any parts of the image cropped by object-fit: cover */
+    display: flex; /* Use flexbox to center image vertically */
+    align-items: center; /* Center image vertically */
+    justify-content: center; /* Center image horizontally */
+    /* --- CHANGES END HERE --- */
+}
+
+.slider-image {
+    width: 100%; /* Image will take up full width of its container */
+    height: 100%; /* Image will take up full height of its container */
+    object-fit: cover; /* THIS IS KEY: It will fill the container while maintaining aspect ratio, cropping as needed */
+    display: block;
+    margin: 0 auto;
+    /* Removed: max-width, height: auto, max-height */
+}
+
+.image-alt-text {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+.slider-arrow {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    font-size: 2em;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.slider-arrow:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.left-arrow {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.right-arrow {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.slider-indicators {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.indicator-dot.active {
+    background-color: #007bff;
+    transform: scale(1.2);
+}
+
+.indicator-dot:hover {
+    background-color: #999;
+}

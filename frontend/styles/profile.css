@@ -1,0 +1,255 @@
+/* ===== PROFILE PAGE ===== */
+/* ===== PROFILE PAGE ===== */
+.profile {
+  max-width: 900px;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+/* Top section with avatar, username, points on left, buttons on right */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.left-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2ecc71;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.left-info h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.left-info p {
+  font-size: 16px;
+  color: #666;
+}
+
+.right-actions button {
+  background-color: var(--sky-blue);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.right-actions button:hover {
+  background-color: var(--electric-blue);
+}
+
+/* Bottom section - logout button centered */
+.logout-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logout-section button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-section button:hover {
+  background-color: #c0392b;
+}
+
+
+/* ===== MODAL COMMON STYLE ===== */
+#profile-edit-modal,
+#password-change-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#profile-edit-modal .modal-content,
+#password-change-modal .modal-content {
+  background: rgb(238, 234, 234);
+  padding: 30px 40px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Close button top right */
+#profile-edit-modal .close-button,
+#password-change-modal .close-button {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 26px;
+  color: #666;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+#profile-edit-modal .close-button:hover,
+#password-change-modal .close-button:hover {
+  color: #2ecc71;
+}
+
+/* Modal headings */
+#profile-edit-modal h3,
+#password-change-modal h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Avatar preview inside modal */
+#profile-edit-modal .avatar-preview {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2ecc71;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Input styles inside modals */
+#profile-edit-modal input[type="text"],
+#password-change-modal input[type="password"],
+#profile-edit-modal input[type="file"] {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+#profile-edit-modal input[type="text"]:focus,
+#password-change-modal input[type="password"]:focus,
+#profile-edit-modal input[type="file"]:focus {
+  outline: none;
+  border-color: #2ecc71;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 15px; /* space for icon */
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.password-wrapper input:focus {
+  outline: none;
+  border-color: #2ecc71;
+}
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
+}
+
+/* Buttons inside modals */
+#profile-edit-modal button,
+#password-change-modal button {
+  background-color: #2ecc71;
+  color: white;
+  font-weight: 700;
+  padding: 14px 0;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+#profile-edit-modal button:hover,
+#password-change-modal button:hover {
+  background-color: #27ae60;
+}
+
+/* Labels for password modal inputs */
+#password-change-modal label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #34495e;
+}
+
+/* New: Styling for the message displayed on the UI */
+.profile .message {
+  padding: 10px 15px;
+  margin-bottom: 15px; /* Adds space below the message */
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  color: #fff; /* Default text color */
+  background-color: #f44336; /* Default for errors (red) */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  word-wrap: break-word; /* Ensures long messages wrap */
+}
+
+/* Styling for success messages */
+.profile .message.success {
+  background-color: #4CAF50; /* A shade of green */
+  color: white; /* Ensure text is readable on green background */
+}
+
+/* Optional: Explicitly define error message style if not relying on default .message */
+.profile .message.error {
+  background-color: #f44336; /* Red for errors */
+  color: white;
+}

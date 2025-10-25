@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Game</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    li {
+        cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Quiz Game</h1>
+
+    <!-- Show loading text while fetching questions -->
+    <div v-if="loading">Loading questions...</div>
+
+    <!-- Show current question -->
+    <div v-else-if="currentQuestionIndex < questions.length">
+        <!-- Show countdown timer -->
+        <p>Time left: {{ timer }} seconds</p>
+
+      <p>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</p>
+      <p>{{ currentQuestion.question_text }}</p>
+
+
+
+      <!-- List of answer options -->
+      <ul>
+        <li
+          v-for="(option, key) in options"
+          :key="key"
+          @click="selectAnswer(option)"
+          :style="getOptionStyle(option)"
+        >
+          {{ option }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Show result when quiz is done -->
+    <div v-else>
+      <h2>Quiz Complete!</h2>
+      <p>You got {{ correctCount }} out of {{ questions.length }} correct.</p>
+      <!-- Restart button -->
+      <button type="button" @click="restartQuiz">Restart Quiz</button>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          questions: [],
+          currentQuestionIndex: 0,
+          selectedAnswer: null,
+          correctCount: 0,
+          loading: true,
+          timer: 10,             // Timer per question
+          intervalId: null       // Reference to the interval for countdown
+        };
+      },
+      computed: {
+        currentQuestion() {
+          return this.questions[this.currentQuestionIndex];
+        },
+        options() {
+          if (!this.currentQuestion) return [];
+          return [
+            this.currentQuestion.option_a,
+            this.currentQuestion.option_b,
+            this.currentQuestion.option_c,
+            this.currentQuestion.option_d,
+          ];
+        },
+      },
+      methods: {
+        // Handle user selecting an answer
+        selectAnswer(option) {
+          if (this.selectedAnswer) return; // Prevent double click
+
+          this.selectedAnswer = option;
+          clearInterval(this.intervalId); // Stop timer
+
+          if (option === this.currentQuestion.correct_answer) {
+            this.correctCount++;
+          }
+
+          // Move to next question after short delay
+          setTimeout(() => {
+            this.nextQuestion();
+          }, 1000);
+        },
+
+        // Move to next question, reset state
+        nextQuestion() {
+          this.selectedAnswer = null;
+          this.currentQuestionIndex++;
+          this.timer = 10;
+          this.startTimer();
+        },
+
+        // Countdown timer logic
+        startTimer() {
+          clearInterval(this.intervalId); // Clear any previous timer
+
+          this.intervalId = setInterval(() => {
+            this.timer--;
+            if (this.timer === 0) {
+              clearInterval(this.intervalId);
+              this.nextQuestion(); // Auto move if time runs out
+            }
+          }, 1000);
+        },
+
+        // Restart the quiz from scratch
+        restartQuiz() {
+          this.loading = true;
+          fetch('/game/questions')
+            .then(res => res.json())
+            .then(data => {
+              this.questions = data;
+              this.correctCount = 0;
+              this.currentQuestionIndex = 0;
+              this.timer = 10;
+              this.loading = false;
+              this.startTimer();
+            });
+        },
+
+        getOptionStyle(option) {
+          if (!this.selectedAnswer) return {};
+
+          if (option === this.currentQuestion.correct_answer) {
+            return { backgroundColor: 'lightgreen' };
+          } else if (option === this.selectedAnswer) {
+            return { backgroundColor: 'lightcoral' };
+          } else {
+            return {};
+          }
+        }
+      },
+      mounted() {
+        // Fetch questions on first load
+        fetch('/game/questions')
+          .then(res => res.json())
+          .then(data => {
+            this.questions = data;
+            this.loading = false;
+            this.startTimer(); // Start the timer when ready
+          });
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
